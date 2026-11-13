@@ -77,8 +77,7 @@ A trajetória é montada a partir de âncoras no HTML (`data-dot="rail"`, `data-
 2. **WhatsApp**: clique em um botão e confirme se a conversa abre no número certo. O site usa
    `5547996188834`, o número publicado no Google. Se não abrir, use o formato do briefing (`554796188834`)
    em `config.js`.
-3. **Endereço**: confirme com a clínica. O briefing dizia "Rua João de Deus Carvalho 5000", e o Perfil da
-   Empresa no Google mostra "R. 5000 – João de Deus Carvalho, 2175". O site usa a versão do Google.
+3. **Endereço**: João de Deus Carvalo, 2175, Bairro Santo Antônio, em Balneário Piçarras – SC.
 4. **CRO**: o site apresenta "Responsável técnico: Dr. José Carlos Fiamenghi Jr. — CRO/SC 11053", número
    da bio do Instagram. Confirme se é o CRO do profissional (e não da clínica).
 5. **Números da bio** (+23 anos / +8 mil pacientes): estão em `stats` no `config.js`. "Pacientes

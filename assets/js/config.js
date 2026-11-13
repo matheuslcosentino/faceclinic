@@ -57,18 +57,15 @@ window.SITE_CONFIG = {
   },
 
   address: {
-    // Briefing: "Rua João de Deus Carvalho 5000". No Google, a clínica aparece como
-    // "R. 5000 - João de Deus Carvalho, 2175" (5000 é o nome da rua; 2175 é o número).
-    street: 'Rua 5000 – João de Deus Carvalho, 2175',
+    street: 'João de Deus Carvalo, 2175',
     complement: null, // ex.: 'Sala 2'
-    district: null, // bairro, quando confirmado
+    district: 'Bairro Santo Antônio',
     city: 'Balneário Piçarras',
     state: 'SC',
     zip: '88380-000',
     country: 'Brasil',
     // Busca do Google Maps (link "Ver localização" e mapa incorporado).
-    // Este texto abre direto o perfil da clínica no Google.
-    mapsQuery: 'Face Clinic Odontologia & Saúde - Dr. Jose Carlos Fiamenghi Jr, R. 5000 - João de Deus Carvalho, 2175, Balneário Piçarras - SC',
+    mapsQuery: 'Face Clinic Odontologia & Saúde, João de Deus Carvalo, 2175, Bairro Santo Antônio, Balneário Piçarras - SC',
   },
 
   // Horários confirmados. Enquanto vazio, o site orienta a consultar pelo WhatsApp.
@@ -219,8 +216,8 @@ window.SITE_CONFIG = {
   // preencha `src` (ex.: 'assets/img/consultorio/recepcao.webp').
   // Enquanto `src` for null, o espaço aparece como moldura elegante.
   gallery: [
-    { src: null, alt: 'Recepção da Face Clinic', caption: 'Recepção' },
-    { src: null, alt: 'Consultório de atendimento da Face Clinic', caption: 'Consultório' },
+    { src: 'assets/img/consultorio/recepcao.png', alt: 'Recepção da Face Clinic', caption: 'Recepção' },
+    { src: 'assets/img/consultorio/consultorio.png', alt: 'Consultório de atendimento da Face Clinic', caption: 'Consultório' },
     { src: null, alt: 'Detalhes do ambiente da Face Clinic', caption: 'Detalhes' },
     { src: null, alt: 'Ambiente de atendimento da Face Clinic', caption: 'Ambiente' },
   ],
@@ -232,7 +229,7 @@ window.SITE_CONFIG = {
     enabled: true,
     sourceLabel: 'Google',
     sourceUrl:
-      'https://www.google.com/maps/search/?api=1&query=Face%20Clinic%20Odontologia%20%26%20Sa%C3%BAde%20-%20Dr.%20Jose%20Carlos%20Fiamenghi%20Jr%2C%20R.%205000%20-%20Jo%C3%A3o%20de%20Deus%20Carvalho%2C%202175%2C%20Balne%C3%A1rio%20Pi%C3%A7arras%20-%20SC',
+      'https://www.google.com/maps/search/?api=1&query=Face%20Clinic%20Odontologia%20%26%20Sa%C3%BAde%2C%20Jo%C3%A3o%20de%20Deus%20Carvalo%2C%202175%2C%20Bairro%20Santo%20Ant%C3%B4nio%2C%20Balne%C3%A1rio%20Pi%C3%A7arras%20-%20SC',
     items: [
       {
         author: 'Nycolle A.',
