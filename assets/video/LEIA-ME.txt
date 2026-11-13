@@ -1,0 +1,16 @@
+VÍDEO DA HERO (opcional)
+========================
+
+Se o consultório enviar um vídeo institucional, coloque aqui (ex.: hero.mp4) e
+ative em assets/js/config.js:
+
+  hero: {
+    video: { mp4: 'assets/video/hero.mp4', webm: null, poster: 'assets/img/dr-jose-carlos.jpg' },
+  },
+
+Recomendações:
+  • 10 a 20 segundos, sem áudio, em loop (takes curtos: profissional, mãos e
+    instrumentos, ambiente, atendimento).
+  • 1920x1080 para desktop, H.264, até ~4 MB (comprimir com HandBrake, por exemplo).
+  • O vídeo toca mudo, em loop e com playsinline; o retrato fica oculto quando
+    houver vídeo. Quem usa "movimento reduzido" vê só o poster.

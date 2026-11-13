@@ -1,0 +1,20 @@
+FOTOS DO CONSULTÓRIO
+====================
+
+Coloque aqui as fotografias reais da clínica (de preferência em .webp ou .jpg,
+com pelo menos 1600 px no lado maior e até ~300 KB cada).
+
+Depois, abra assets/js/config.js e preencha o campo `src` de cada item em `gallery`:
+
+  gallery: [
+    { src: 'assets/img/consultorio/recepcao.webp', alt: 'Recepção da Face Clinic', caption: 'Recepção' },
+    ...
+  ]
+
+Ordem dos espaços na página:
+  1º item → foto vertical grande (proporção ~4:5)
+  2º e 3º → fotos menores (proporção ~4:5)
+  4º item → foto panorâmica larga (proporção ~21:9)
+
+Enquanto `src` for null, o espaço aparece como uma moldura com o logotipo.
+As fotos com `src` ganham zoom ao clicar (lightbox) automaticamente.
