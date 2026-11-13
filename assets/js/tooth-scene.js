@@ -313,7 +313,10 @@
     var state = {
       progress: 0, spin: 0, focus: 0, focusTarget: 0,
       px: 0, py: 0, tx: 0, ty: 0, bump: 0, intro: 0,
+      dragX: 0, dragY: 0,
     };
+    var canvas = renderer.domElement;
+    var drag = null;
     var running = false, disposed = false;
     var clock = new THREE.Clock();
 
@@ -330,19 +333,19 @@
 
     function draw(dt) {
       var t = clock.elapsedTime;
-      if (!reduce) state.spin += dt * 0.14;
+      if (!reduce && !drag) state.spin += dt * 0.14;
       state.intro = reduce ? 1 : damp(state.intro, 1, 0.03, dt);
       state.focus = damp(state.focus, state.focusTarget, 0.02, dt);
       state.px = damp(state.px, state.tx, 0.03, dt);
       state.py = damp(state.py, state.ty, 0.03, dt);
       state.bump *= Math.pow(0.04, dt);
 
-      spinner.rotation.y = -0.5 + state.spin + state.focus + state.progress * Math.PI * 1.1;
+      spinner.rotation.y = -0.5 + state.spin + state.focus + state.progress * Math.PI * 1.1 + state.dragY;
       spinner.rotation.z = reduce ? 0 : Math.sin(t * 0.45) * 0.04;
       var s = (0.86 + 0.14 * state.intro) * (1 + state.bump * 0.04);
       spinner.scale.setScalar(s);
 
-      pivot.rotation.x = 0.14 + state.py * 0.16 + (state.progress - 0.5) * 0.32;
+      pivot.rotation.x = 0.14 + state.py * 0.16 + (state.progress - 0.5) * 0.32 + state.dragX;
       pivot.rotation.y = state.px * 0.24;
       pivot.position.y = reduce ? 0 : Math.sin(t * 0.8) * 0.05;
 
@@ -380,10 +383,38 @@
     ro.observe(stage);
     resize();
 
+    function startDrag(e) {
+      if (drag || !e.isPrimary || e.button !== 0 || !stage.classList.contains('is-ready')) return;
+      canvas.setPointerCapture(e.pointerId);
+      drag = { id: e.pointerId, x: e.clientX, y: e.clientY };
+      canvas.classList.add('is-dragging');
+    }
+
+    function moveDrag(e) {
+      if (!drag || e.pointerId !== drag.id) return;
+      var radiansPerPixel = Math.PI / Math.max(canvas.clientWidth, 1);
+      state.dragY += (e.clientX - drag.x) * radiansPerPixel;
+      state.dragX += (e.clientY - drag.y) * radiansPerPixel;
+      drag.x = e.clientX;
+      drag.y = e.clientY;
+      if (!running) draw(0);
+    }
+
+    function endDrag(e) {
+      if (!drag || e.pointerId !== drag.id) return;
+      drag = null;
+      canvas.classList.remove('is-dragging');
+    }
+
+    canvas.addEventListener('pointerdown', startDrag);
+    canvas.addEventListener('pointermove', moveDrag);
+    canvas.addEventListener('lostpointercapture', endDrag);
+
     // Interação discreta com o mouse em toda a seção
     var section = stage.closest('section') || stage;
     var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
     var onMove = function (e) {
+      if (drag || e.pointerType !== 'mouse') return;
       var r = stage.getBoundingClientRect();
       state.tx = Math.max(-1, Math.min(1, ((e.clientX - r.left) / r.width) * 2 - 1));
       state.ty = Math.max(-1, Math.min(1, ((e.clientY - r.top) / r.height) * 2 - 1));
@@ -413,6 +444,9 @@
       document.removeEventListener('visibilitychange', onVis);
       section.removeEventListener('pointermove', onMove);
       section.removeEventListener('pointerleave', onLeave);
+      canvas.removeEventListener('pointerdown', startDrag);
+      canvas.removeEventListener('pointermove', moveDrag);
+      canvas.removeEventListener('lostpointercapture', endDrag);
       [geo, ringGeo1, ringGeo2, beadGeo].forEach(function (g) { g.dispose(); });
       porcelain.dispose();
       gold.dispose();

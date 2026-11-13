@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="bg" x2="1" y2="1">
+      <stop stop-color="#0b5765"/>
+      <stop offset="1" stop-color="#032a32"/>
+    </linearGradient>
+    <linearGradient id="enamel" x2="1" y2="1">
+      <stop stop-color="#fff9e9"/>
+      <stop offset="1" stop-color="#ded8cb"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#bg)"/>
+  <g transform="translate(12 9) scale(.215)">
+    <path fill="#dcc595" d="M180 83c9-20 7-52-7-68-15-18-37-12-56-5-16 6-26 12-43 8C53 13 35 2 20 14 1 29 3 57 12 81c9 22 12 32 14 54 2 27 13 67 28 70 8 1 10-17 12-31 3-17 7-33 19-42 14 3 35 15 48 20 11 5 20 2 24-7 2-5-1-9 0-14 1-3 5-5 5-8 0-3-3-6-1-9 3-4 11-5 11-10 0-4-8-12-11-19-4-11-1-23-2-34-1-10-3-19-7-29 19 7 23 34 17 55-2 7 6 12 11 6Z"/>
+    <path fill="#dcc595" d="M89 139c14 5 29 17 46 19 8 1 13-1 19-5-4 24-15 47-27 53-9 4-9-8-11-17-4-21-13-37-27-50Z"/>
+    <path fill="url(#enamel)" d="M139 22c-12-4-25 4-39 8-19 6-33 2-50-4-14-5-22-5-29 8-10 18-4 42 5 65 8 20 10 35 12 58 1 15 7 29 15 36-7-27-1-54 14-72 15-19 35-28 53-43 15-12 34-43 19-56Z"/>
+  </g>
+</svg>

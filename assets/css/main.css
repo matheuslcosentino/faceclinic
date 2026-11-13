@@ -897,7 +897,12 @@ main:focus { outline: none; }
   opacity: 0;
   transition: opacity 1.4s var(--ease-out);
 }
-.treat__canvas.is-ready canvas { opacity: 1; }
+.treat__canvas.is-ready canvas {
+  opacity: 1;
+  cursor: grab;
+  touch-action: none;
+}
+.treat__canvas.is-ready canvas.is-dragging { cursor: grabbing; }
 .treat__halo {
   position: absolute;
   inset: 8%;
